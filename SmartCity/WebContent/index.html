@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>物业管理页面</title>
+<link rel="stylesheet" href="css/style.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/date.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+</head>
+<body>
+<div class="top"><img class="logo" src="images/B5C8.png">
+</div>
+<div class="content" id="con_one_1">
+  <div class="left-column">
+    <div class="service" onclick="menuDisplyController(1)">
+      <h5>物业管理</h5>
+    </div>
+   <div class="tab1" id="tab1" style="display: none;">
+      <dl class="call">
+        <div class="medo" >
+          <dt id="column1" onclick=" " ><a href="#">楼盘管理</a></dt>
+          <dt id="column2" onclick=""><a href="#">业主管理</a></dt>
+          <dt id="column3" onclick="setTab('column',3)"><a href="#">物业费用维护</a></dt>
+          <dt id="column4" onclick="setTab('column',4)"><a href="#">电子钥匙管理</a></dt>
+          <dt id="column4" onclick="setTab('column',4)"><a href="#">电子钥匙审批</a></dt>
+        </div>
+      </dl>
+    </div>
+    <div class="service" onclick="menuDisplyController(2)">
+      <h5>车辆管理</h5>
+    </div>
+     <div class="tab2" id="tab2" style="display: none;">
+      <dl class="call">
+        <div class="medo" >
+           <dt id="column1" onclick=" " ><a href="#">新增车辆</a></dt>
+          <dt id="column2" onclick=""><a href="#">车辆列表</a></dt>
+        </div>
+      </dl>
+    </div>
+    
+    <div class="service" onclick="menuDisplyController(3)">
+      <h5>商圈管理</h5>
+    </div>
+     <div class="tab3" id="tab3" style="display: none;">
+      <dl class="call">
+        <div class="medo" >
+           <dt id="column1" onclick=" " ><a href="#">商品管理</a>
+              <dd id="column1" onclick=" " ><a href="#">新增商品</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">商品列表</a></dd>
+           </dt>
+          <dt id="column2" onclick=""><a href="#">拼团商品</a>
+              <dd id="column1" onclick=" " ><a href="#">发起拼团</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">拼团商品列表</a></dd>
+           </dt>
+            <dt id="column3" onclick=""><a href="#">订单管理</a>
+              <dd id="column1" onclick=" " ><a href="#">所有订单</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">待付款订单</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">待发货订单</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">待收货订单</a></dd>
+           </dt>
+           <dt id="column3" onclick=""><a href="#">销售记录查询</a>
+           </dt>
+        </div>
+      </dl>
+    </div>
+    <div class="service" onclick="menuDisplyController(4)">
+      <h5>平台管理</h5>
+    </div>
+    <div class="tab4" id="tab4" style="display: none;">
+      <dl class="call">
+        <div class="medo" >
+           <dt id="column1" onclick=" " ><a href="#">平台消息</a>
+              <dd id="column1" onclick="" ><a href="#">发布消息</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">消息列表</a></dd>
+           </dt>
+        </div>
+      </dl>
+    </div>
+    
+     <div class="service" onclick="menuDisplyController(5)">
+      <h5>系统管理</h5>
+    </div>
+     <div class="tab5" id="tab5" style="display: none;">
+      <dl class="call">
+        <div class="medo" >
+           <dt id="column1" onclick=" " ><a href="#">用户管理</a>
+              <dd id="column1" onclick=" " ><a href="#">新增用户</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">用户列表</a></dd>
+           </dt>
+          <dt id="column2" onclick=""><a href="#">权限管理</a>
+              <dd id="column1" onclick=" " ><a href="#">角色管理</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">栏目权限管理</a></dd>
+           </dt>
+            <dt id="column3" onclick=""><a href="#">系统异常监控</a>
+              <dd id="column1" onclick=" " ><a href="#">车闸监控</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">系统操作日志</a></dd>
+           </dt>
+           <dt id="column3" onclick=""><a href="#">全局参数 配置</a>
+              <dd id="column1" onclick=" " ><a href="#">客户端导航块配置</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">轮播广告配置</a></dd>
+              <dd id="column1" onclick=" " ><a href="#">第三放外不接口连接配置</a></dd>
+           	  <dd id="column1" onclick=" " ><a href="#">更新包下发</a></dd>
+           	  <dd id="column1" onclick=" " ><a href="#">数据字典配置</a></dd>
+           </dt>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+<!--右边主要内容  -->
+		<div class="meduo">
+			<div class="right-content" id="con_column_1">
+			</div>
+		</div>
+	</div>
+</body>
+</html>

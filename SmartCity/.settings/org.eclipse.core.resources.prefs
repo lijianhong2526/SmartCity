@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+encoding//src/log4j.properties=UTF-8
+encoding//src/www/tianfengSD/com/Util/mailUtil/MailAuthenticator.java=GBK
+encoding//src/www/tianfengSD/com/Util/mailUtil/ReadHtmlFile.java=GBK
+encoding//src/www/tianfengSD/com/Util/mailUtil/SimpleMail.java=GBK
+encoding//src/www/tianfengSD/com/Util/mailUtil/SimpleMailSender.java=GBK
