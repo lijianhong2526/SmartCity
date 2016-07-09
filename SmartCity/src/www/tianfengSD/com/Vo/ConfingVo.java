@@ -6,7 +6,7 @@ package www.tianfengSD.com.Vo;
  * @author lijianhong
  *
  */
-public class ConfigVo extends BaseVo {
+public class ConfingVo extends BaseVo {
 
 	/**
 	 * 
