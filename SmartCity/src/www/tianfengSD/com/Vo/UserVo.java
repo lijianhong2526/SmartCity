@@ -1,6 +1,7 @@
 package www.tianfengSD.com.Vo;
 
-import java.util.Date;
+import net.sf.json.JSONObject;
+import www.tianfengSD.com.Util.Md5Util;
 
 public class UserVo extends BaseVo {
 
@@ -9,94 +10,175 @@ public class UserVo extends BaseVo {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private int U_id;
-	private String U_Name;
-	private String U_Phone;
-	private String U_NicName;
-	private String U_headurl;
-	private int Account_type;
-	private Date createDate;
-	private Date latstUpdate;
-	private String wx_open_id;
-	private String Electronic_id;
+	private int id;
+	private String name;
+	private String password;
+	private String wx_openid;
+	private String qq_openid;
+	private String phone;
+	private String login_type;
+	private String account_type;
+	private String headurl;
+	private int integral;
+	private String nickname;
+	private String remark;
+	
 
-	public int getU_id() {
-		return U_id;
+	/**
+	 * 流水号
+	 * 
+	 * @return
+	 */
+	public int getId() {
+		return id;
 	}
 
-	public void setU_id(int u_id) {
-		U_id = u_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public String getU_Name() {
-		return U_Name;
+	/**
+	 * 姓名
+	 * 
+	 * @return
+	 */
+	public String getName() {
+		return name;
 	}
 
-	public void setU_Name(String u_Name) {
-		U_Name = u_Name;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getU_Phone() {
-		return U_Phone;
+	/**
+	 * 密码（MD5加密）
+	 * 
+	 * @return
+	 */
+	public String getPassword() {
+		return password;
 	}
 
-	public void setU_Phone(String u_Phone) {
-		U_Phone = u_Phone;
+	public void setPassword(String password) {
+		this.password = Md5Util.GetMD5Code(password);
 	}
 
-	public String getU_NicName() {
-		return U_NicName;
+	/**
+	 * 微信ID
+	 * 
+	 * @return
+	 */
+	public String getWx_openid() {
+		return wx_openid;
 	}
 
-	public void setU_NicName(String u_NicName) {
-		U_NicName = u_NicName;
+	public void setWx_openid(String wx_openid) {
+		this.wx_openid = wx_openid;
 	}
 
-	public String getU_headurl() {
-		return U_headurl;
+	/**
+	 * QQ ID
+	 * 
+	 * @return
+	 */
+	public String getQq_openid() {
+		return qq_openid;
 	}
 
-	public void setU_headurl(String u_headurl) {
-		U_headurl = u_headurl;
+	public void setQq_openid(String qq_openid) {
+		this.qq_openid = qq_openid;
 	}
 
-	public int getAccount_type() {
-		return Account_type;
+	/**
+	 * 手机号码
+	 * 
+	 * @return
+	 */
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setAccount_type(int account_type) {
-		Account_type = account_type;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+	/**
+	 * 用户类型
+	 * 
+	 * @return
+	 */
+	public String getLogin_type() {
+		return login_type;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setLogin_type(String login_type) {
+		this.login_type = login_type;
 	}
 
-	public Date getLatstUpdate() {
-		return latstUpdate;
+	/**
+	 * 帐号类型
+	 * 
+	 * @return
+	 */
+	public String getAccount_type() {
+		return account_type;
 	}
 
-	public void setLatstUpdate(Date latstUpdate) {
-		this.latstUpdate = latstUpdate;
+	public void setAccount_type(String account_type) {
+		this.account_type = account_type;
 	}
 
-	public String getWx_open_id() {
-		return wx_open_id;
+	/**
+	 * 头像路径
+	 * 
+	 * @return
+	 */
+	public String getHeadurl() {
+		return headurl;
 	}
 
-	public void setWx_open_id(String wx_open_id) {
-		this.wx_open_id = wx_open_id;
+	public void setHeadurl(String headurl) {
+		this.headurl = headurl;
 	}
 
-	public String getElectronic_id() {
-		return Electronic_id;
+	/**
+	 * 用户总积分
+	 * 
+	 * @return
+	 */
+	public int getIntegral() {
+		return integral;
 	}
 
-	public void setElectronic_id(String electronic_id) {
-		Electronic_id = electronic_id;
+	public void setIntegral(int integral) {
+		this.integral = integral;
 	}
+
+	/**
+	 * 昵称
+	 * 
+	 * @return
+	 */
+	public String getNickname() {
+		return nickname;
+	}
+
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+
+	/**
+	 * 备注
+	 * 
+	 * @return
+	 */
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+	
+	
 }
