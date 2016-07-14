@@ -30,13 +30,7 @@ public class UserController {
 	public @ResponseBody List<UserVo> getUserList() {
 		return userService.getUserList();
 	}
-
-	@RequestMapping(value = "/registerUser", method = { RequestMethod.POST })
-	public @ResponseBody Boolean registerUser(@RequestBody UserVo userVo, HttpServletRequest request,
-			HttpServletResponse response) {
-		return userService.registerUser(userVo);
-	}
-
+	
 	@RequestMapping(value = "/userLogin", method = { RequestMethod.POST })
 	public @ResponseBody Boolean validateUser(@RequestBody UserVo userVo, HttpServletRequest request,
 			HttpServletResponse response) {

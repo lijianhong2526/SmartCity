@@ -1,6 +1,5 @@
 package www.tianfengSD.com.Vo;
 
-import net.sf.json.JSONObject;
 import www.tianfengSD.com.Util.Md5Util;
 
 public class UserVo extends BaseVo {
