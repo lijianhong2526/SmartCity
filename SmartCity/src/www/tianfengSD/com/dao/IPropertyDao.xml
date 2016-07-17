@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="www.tianfengSD.com.dao.IPropertyDao">
+
+	<select id="getAllProperty" resultType="PropertyVo">
+		select pt.Property_id as
+		propertyId,pt.Property_name as propertyName,
+		pt.Property_address as
+		propertyAddress
+		from property_t pt
+	</select>
+
+	<select id="getCostbyUid" resultType="CostApiVO" parameterType="java.lang.String">
+		SELECT
+		ct.Cost_id as costId,
+		ut.`name` as ownerName,
+		pt.Property_name as propertyName,
+		ht.build_No as buildNo,
+		ht.hous_No as houseNo,
+		ct.Water as water,
+		ct.Electric as electric,
+		ct.FWater as fWater,
+		ct.FElectric as fElectric,
+		ct.FProperty as fProperty,
+		ct.rent as rent,
+		ct.Fall as fall,
+		ct.state ,
+		DATE_FORMAT(ct.FTim,'%Y-%m') as fTime,
+		DATE_FORMAT(ct.createDate
+		,'%Y-%m-%d') as createDate
+		FROM
+		cost_t ct
+		LEFT JOIN propertyhous_t ht ON
+		ht.hous_id = ct.hous_id
+		LEFT JOIN property_t pt ON pt.Property_id =
+		ct.Property_id
+		LEFT JOIN user_info_t ut ON ht.owner_id = ut.id
+		where 1=1
+		<if test="uid != null  and uid != ''">
+			and ht.owner_id=#{uid}
+		</if>
+		<if test="costId != null and costId != ''">
+			and ct.Cost_id=#{costId}
+		</if>
+		order by ct.FTim,ct.state
+	</select>
+	<update id="updateCostStateByCostId" parameterType="java.lang.String">
+		update cost_t
+		t set t.state=1 where t.Cost_id=#{0}
+	</update>
+
+</mapper>  

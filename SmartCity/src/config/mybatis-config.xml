@@ -6,13 +6,17 @@
 	<!-- 实体类,简称 -设置别名 -->
 	<typeAliases>
 		<typeAlias alias="UserVo" type="www.tianfengSD.com.Vo.UserVo" />
-	</typeAliases> 
-	<!-- 实体接口映射资源 -->
-	<!--
-		说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml
-	-->
-	<mappers>
-		<mapper resource="www/tianfengSD/com/dao/IUserDao.xml"/>
-	</mappers> 
+		<typeAlias alias="PropertyVo" type="www.tianfengSD.com.Vo.PropertyVo" />
+		<typeAlias alias="PropertyVo" type="www.tianfengSD.com.Vo.PropertyVo" />
+		<typeAlias alias="CostApiVO" type="www.tianfengSD.com.Vo.apiVo.CostApiVO" />
+		<typeAlias alias="NoticeVo" type="www.tianfengSD.com.Vo.NoticeVo" />
+		<typeAlias alias="RepairVo" type="www.tianfengSD.com.Vo.RepairVo" />
 
+	</typeAliases>
+	<!-- 实体接口映射资源 -->
+	<!-- 说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml -->
+	<mappers>
+		<!-- <mapper resource="www/tianfengSD/com/dao/IUserDao.xml"/> -->
+		<mapper resource="www/tianfengSD/com/dao/IPropertyDao.xml" />
+	</mappers>
 </configuration>  

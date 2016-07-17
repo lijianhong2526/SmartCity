@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="www.tianfengSD.com.dao.INoticeDao">
+
+	<select id="getNotice" resultType="NoticeVo" parameterType="NoticeVo">
+		SELECT
+		t.Notice_id as noticeId,
+		t.Notice_Title as noticeTitle,
+		t.Notice_content as noticeContent,
+		CONCAT(substring(t.Notice_content,1,50),'……') as shotContent,
+		pt.adminOffice as propertyNameOffice,
+		DATE_FORMAT(t.createDate,'%Y-%m-%d') as createDate
+		FROM
+		notice_t t
+		LEFT
+		JOIN property_t pt ON pt.Property_id = t.property_id
+		where 1=1
+		<if test="propertyId != null and propertyId != ''">
+		  and t.property_id=#{propertyId}
+		</if>
+		<if test="noticeId != null and noticeId != ''">
+			and t.Notice_id=#{noticeId}
+		</if>
+	</select>
+</mapper>  
