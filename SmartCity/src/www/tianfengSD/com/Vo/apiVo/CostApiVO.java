@@ -134,12 +134,14 @@ public class CostApiVO extends BaseVo {
 		this.rent = rent;
 	}
 
+	
+
 	public Double getFall() {
 		return fall;
 	}
 
 	public void setFall(Double fall) {
-		fall = fall;
+		this.fall = fall;
 	}
 
 	public int getState() {

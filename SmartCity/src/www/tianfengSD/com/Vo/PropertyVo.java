@@ -1,6 +1,5 @@
 package www.tianfengSD.com.Vo;
 
-import sun.net.www.content.audio.basic;
 
 /**
  * 物业实体类

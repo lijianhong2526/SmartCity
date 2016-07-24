@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
+<mapper namespace="www.tianfengSD.com.dao.IHelpDao">
+
+	<select id="getcount" resultType="int">
+		select count(1) as num from help_t
+	</select>
+
+	<select id="getHelpList" parameterType="java.util.Map" resultType="HelpeVO" >
+		SELECT
+		t.help_id AS helpeId,
+		t.createUser AS creteUser,
+		t.picUrl AS
+		picUrl,
+		t.help_title AS helpTitle,
+		CONCAT(
+		substring(t.Helpcontent, 1, 50),
+		'……'
+		) AS shotContent,
+		(
+		SELECT
+		count(1)
+		FROM
+		help_detile_t hd
+		WHERE
+		hd.Helpe_id = t.help_id
+		) AS loveCount,
+		DATE_FORMAT(t.createDate, '%Y-%m-%d') AS createDate
+		FROM
+		help_t t
+		WHERE
+		1 = 1
+		<if test="userId !=null and userId !=''">
+		 and t.createUser=#{userId}
+		</if>
+		<if test="type == 1">
+			and 	EXISTS (
+			SELECT
+				1
+			FROM
+				help_detile_t dt
+			WHERE
+				dt.UserId = 1
+			AND t.help_id = dt.helpe_id
+		)
+		</if>
+		order by t.createDate desc
+		 LIMIT #{nowPage},10
+	</select>
+	
+	<select id="getHelpVoById" parameterType="java.lang.String" resultType="HelpeVO" > 
+					SELECT
+			t.help_id AS helpeIdhelpeId,
+			t.createUser AS creteUser,
+			t.picUrl AS picUrl,
+			t.help_title AS helpTitle,
+			CONCAT(
+				substring(t.Helpcontent, 1, 50),
+				'……'
+			) AS shotContent,
+			t.Helpcontent AS helpContent,
+			DATE_FORMAT(t.createDate, '%Y-%m-%d') AS createDate,
+			(
+				SELECT
+					sum(hd.help_money)
+				FROM
+					help_detile_t hd
+				WHERE
+					hd.Helpe_id = #{0}
+			) AS nowMoney,
+			(
+				SELECT
+					count(1)
+				FROM
+					help_detile_t hd
+				WHERE
+					hd.Helpe_id = #{0}
+			) AS detileCount,
+	        t.helpMoeny as helpMoney
+		FROM
+			help_t t
+		WHERE
+			t.help_id = #{0}
+	</select>
+	
+	<select id="getHelpDetilById" parameterType="java.lang.String"
+	resultType="HelpDetilVo">
+		SELECT
+		us.headurl as urlPath,
+		us.nickname as uerNmae,
+		DATE_FORMAT(hd.create_date, '%Y-%m-%d') as createDates,
+		hd.help_money as helpMoney
+		FROM
+		help_detile_t hd
+		LEFT JOIN user_info_t us ON us.id = hd.UserId
+		WHERE
+		hd.Helpe_id = #{0}
+	</select>
+	
+	<insert id="insertHelp" parameterType="HelpeVO">
+		INSERT INTO help_t (
+			help_title,
+			createUser,
+			helpMoeny,
+			Helpcontent,
+			Phone,
+			picUrl,
+			createDate
+		)
+		VALUE(
+			#{helpTitle},
+			#{creteUser},
+			#{HelpMoney},
+			#{helpContent},
+			#{Phone},
+			#{picUrl},
+			now()
+		)
+	</insert>
+	
+	<insert id="insertHelpDetil" parameterType="HelpDetilVo">
+		INSERT INTO help_detile_t (
+		Helpe_id,
+		create_date,
+		UserId,
+	    help_money
+		)value(#{helpId},NOW(),#{userId},#{helpMoney})
+	</insert>
+</mapper>  

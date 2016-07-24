@@ -11,7 +11,8 @@
 		<typeAlias alias="CostApiVO" type="www.tianfengSD.com.Vo.apiVo.CostApiVO" />
 		<typeAlias alias="NoticeVo" type="www.tianfengSD.com.Vo.NoticeVo" />
 		<typeAlias alias="RepairVo" type="www.tianfengSD.com.Vo.RepairVo" />
-
+		<typeAlias alias="HelpeVO" type="www.tianfengSD.com.Vo.HelpeVO" />
+		<typeAlias alias="HelpDetilVo" type="www.tianfengSD.com.Vo.HelpDetilVo" />
 	</typeAliases>
 	<!-- 实体接口映射资源 -->
 	<!-- 说明：如果xxMapper.xml配置文件放在和xxMapper.java统一目录下，mappers也可以省略，因为org.mybatis.spring.mapper.MapperFactoryBean默认会去查找与xxMapper.java相同目录和名称的xxMapper.xml -->

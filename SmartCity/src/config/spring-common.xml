@@ -10,14 +10,24 @@
 		http://www.springframework.org/schema/tx
 		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<!-- 1. 数据源 : DriverManagerDataSource -->
+	<!-- 1. 数据源 : DriverManagerDataSource
 	 <bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://120.76.26.32:3306/smartcity?characterEncoding=utf8" />
+		<property name="username" value="root" />
+		<property name="password" value="data@JUTU_2016" />
+	</bean> -->
+	<!-- 1. 数据源 : DriverManagerDataSource-->
+	<!--  --> 
+	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
 		<property name="url" value="jdbc:mysql://localhost:3306/smartcity?characterEncoding=utf8" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 	</bean>
+	
 	
 	<!--
 		2. mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源
