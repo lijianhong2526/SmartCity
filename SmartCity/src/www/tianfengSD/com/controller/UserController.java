@@ -7,16 +7,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import www.tianfengSD.com.Vo.NoticeVo;
 import www.tianfengSD.com.Vo.UserVo;
+import www.tianfengSD.com.Vo.returnVo.SendStautsVo;
 import www.tianfengSD.com.server.api.IUserService;
 
 /**
  * 用户相关操作接口提供类
+ * 
  * @author lijianhong
  *
  */
@@ -24,28 +28,33 @@ import www.tianfengSD.com.server.api.IUserService;
 @RequestMapping("/userService")
 public class UserController {
 	@Autowired
-	private IUserService userService;
+	private IUserService iUserService;
 
-	@RequestMapping(value = "/getUserList", method = { RequestMethod.GET })
-	public @ResponseBody List<UserVo> getUserList() {
-		return userService.getUserList();
-	}
-	
 	@RequestMapping(value = "/userLogin", method = { RequestMethod.POST })
-	public @ResponseBody Boolean validateUser(@RequestBody UserVo userVo, HttpServletRequest request,
+	public @ResponseBody SendStautsVo userLogin(@RequestBody UserVo userVo, HttpServletRequest request,
 			HttpServletResponse response) {
-		return userService.validateUser(userVo);
+		SendStautsVo vo = new SendStautsVo();
+		try {
+			String userId = iUserService.userLogin(userVo);
+			vo.setCode("300");
+			vo.setMsg("success ");
+			vo.setValue(userId);
+		} catch (Exception e) {
+			vo.setCode("301");
+			vo.setMsg("error " + e);
+		}
+		return vo;
 	}
-	
-	@RequestMapping(value = "/updateUserByUid", method = { RequestMethod.POST })
-	public @ResponseBody Boolean updateUserByUid(@RequestBody UserVo userVo, HttpServletRequest request,
+
+	@RequestMapping(value = "/updateUserInfoById", method = { RequestMethod.POST })
+	public @ResponseBody SendStautsVo updateUserInfoById(@RequestBody UserVo userVo, HttpServletRequest request,
 			HttpServletResponse response) {
-		return userService.updateUserByUid(userVo);
+		return iUserService.updateUserInfoById(userVo);
 	}
-	
-	@RequestMapping(value = "/getUserByUId", method = { RequestMethod.POST })
-	public @ResponseBody UserVo getUserByUId(@RequestBody UserVo userVo, HttpServletRequest request,
-			HttpServletResponse response) {
-		return userService.getUserByUId(userVo);
+
+	@RequestMapping(value = "/updateUserInfoById", method = { RequestMethod.GET })
+	public @ResponseBody UserVo getUserByUid(@ModelAttribute(value = "userId") String userId,
+			HttpServletRequest request, HttpServletResponse response) {
+		return iUserService.getUserByUid(userId);
 	}
 }

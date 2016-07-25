@@ -1,46 +1,54 @@
 package www.tianfengSD.com.Vo;
 
-import www.tianfengSD.com.Util.Md5Util;
-
 public class UserVo extends BaseVo {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private int id;
+	private int userID;
 	private String name;
-	private String password;
-	private String wx_openid;
-	private String qq_openid;
+	private String openId;
 	private String phone;
-	private String login_type;
-	private String account_type;
-	private String headurl;
-	private int integral;
-	private String nickname;
-	private String remark;
-	
-
-	/**
-	 * 流水号
-	 * 
-	 * @return
-	 */
-	public int getId() {
-		return id;
+	private String loginType;
+	private String headUrl;
+	private String nickName;
+	private String udId;
+	private String loginId;
+	private String checkKey;
+	private String userId;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
-	/**
-	 * 姓名
-	 * 
-	 * @return
-	 */
+	public String getCheckKey() {
+		return checkKey;
+	}
+
+	public void setCheckKey(String checkKey) {
+		this.checkKey = checkKey;
+	}
+
+	public String getLoginId() {
+		return loginId;
+	}
+
+	public void setLoginId(String loginId) {
+		this.loginId = loginId;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -49,50 +57,14 @@ public class UserVo extends BaseVo {
 		this.name = name;
 	}
 
-	/**
-	 * 密码（MD5加密）
-	 * 
-	 * @return
-	 */
-	public String getPassword() {
-		return password;
+	public String getOpenId() {
+		return openId;
 	}
 
-	public void setPassword(String password) {
-		this.password = Md5Util.GetMD5Code(password);
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
-	/**
-	 * 微信ID
-	 * 
-	 * @return
-	 */
-	public String getWx_openid() {
-		return wx_openid;
-	}
-
-	public void setWx_openid(String wx_openid) {
-		this.wx_openid = wx_openid;
-	}
-
-	/**
-	 * QQ ID
-	 * 
-	 * @return
-	 */
-	public String getQq_openid() {
-		return qq_openid;
-	}
-
-	public void setQq_openid(String qq_openid) {
-		this.qq_openid = qq_openid;
-	}
-
-	/**
-	 * 手机号码
-	 * 
-	 * @return
-	 */
 	public String getPhone() {
 		return phone;
 	}
@@ -101,83 +73,35 @@ public class UserVo extends BaseVo {
 		this.phone = phone;
 	}
 
-	/**
-	 * 用户类型
-	 * 
-	 * @return
-	 */
-	public String getLogin_type() {
-		return login_type;
+	public String getLoginType() {
+		return loginType;
 	}
 
-	public void setLogin_type(String login_type) {
-		this.login_type = login_type;
+	public void setLoginType(String loginType) {
+		this.loginType = loginType;
 	}
 
-	/**
-	 * 帐号类型
-	 * 
-	 * @return
-	 */
-	public String getAccount_type() {
-		return account_type;
+	public String getHeadUrl() {
+		return headUrl;
 	}
 
-	public void setAccount_type(String account_type) {
-		this.account_type = account_type;
+	public void setHeadUrl(String headUrl) {
+		this.headUrl = headUrl;
 	}
 
-	/**
-	 * 头像路径
-	 * 
-	 * @return
-	 */
-	public String getHeadurl() {
-		return headurl;
+	public String getNickName() {
+		return nickName;
 	}
 
-	public void setHeadurl(String headurl) {
-		this.headurl = headurl;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 
-	/**
-	 * 用户总积分
-	 * 
-	 * @return
-	 */
-	public int getIntegral() {
-		return integral;
+	public String getUdId() {
+		return udId;
 	}
 
-	public void setIntegral(int integral) {
-		this.integral = integral;
+	public void setUdId(String udId) {
+		this.udId = udId;
 	}
-
-	/**
-	 * 昵称
-	 * 
-	 * @return
-	 */
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	/**
-	 * 备注
-	 * 
-	 * @return
-	 */
-	public String getRemark() {
-		return remark;
-	}
-
-	public void setRemark(String remark) {
-		this.remark = remark;
-	}
-	
-	
 }

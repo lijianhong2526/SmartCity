@@ -3,80 +3,48 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
 <mapper namespace="www.tianfengSD.com.dao.IUserDao">
-	<select id="getUserList" resultType="UserVo">
-		select u.id,
-		u.`name` as
-		name,
-		u.`password` as password,
-		u.wx_openid as wx_openid,
-		u.qq_openid as
-		qq_openid,
-		u.phone as phone,
-		u.login_type as login_type,
-		u.account_type
-		as account_type,
-		u.headurl as headurl,
-		u.integral as integral,
-		u.nickname as nickname,
-		u.createtime as createDate,
-		u.updatetime as
-		lastuUdateDate,
-		u.remark as remark FROM user_info_t u
+	<select id="userLogin" parameterType="UserVo" 
+		statementType="CALLABLE">
+		<![CDATA[ {call
+		UserLogin( #{loginType,jdbcType=VARCHAR,mode=IN},
+		#{loginId,jdbcType=VARCHAR,mode=IN},
+		#{udId,jdbcType=VARCHAR,mode=IN},
+		#{nickName,jdbcType=VARCHAR,mode=IN},
+		#{headUrl,jdbcType=VARCHAR,mode=IN},
+		#{userId,jdbcType=VARCHAR,mode=OUT})}]]>
 	</select>
-	<insert id="registerUser" parameterType="UserVo">
-		INSERT INTO user_info_t
-		(
-		NAME,
-		PASSWORD,
-		phone,
-		createtime,
-		updatetime
-		)
-		VALUE
-		(#{name},#{password},#{phone},NOW(),NOW())
-	</insert>
-	<update id="updateUserByUid" parameterType="UserVo">
-		update user_info_t u set u.id=#{id}
-		<if test="name != null and name != ''">
-			,u.name=#{name}
+	<update id="updateUserInfoById" parameterType="UserVo">
+		update user_info_t us
+		set 1=1
+		<if test="name != null and name !=''">
+			,us.`name` = #{name}
 		</if>
-		<if test="nickname != null and nickname != ''">
-			,u.headurl=#{nickname}
+		<if test="phone != null and phone !=''">
+			, us.phone =#{phone}
 		</if>
-		<if test="headurl != null and headurl != ''">
-			,u.headurl=#{headurl}
+		<if test="nickName !=null and nickName!=''">
+			,us.nickname=#{nickName}
 		</if>
-		where u.id=#{id}
+		<if test="headUrl != null and headUrl != ''">
+			,us.headurl=#{headUrl}
+		</if>
+		where id=#{userID}
 	</update>
-	<select id="validateUser" parameterType="UserVo" resultType="int">
+
+	<select id="getUserByUid" parameterType="java.lang.String">
 		SELECT
-		COUNT(1) AS num
+		t.id as id,
+		t.headurl as headUrl,
+		t.login_type as loginType,
+		t.`name` as name,
+		t.nickname as nickName, 
+		t.openid as openId,
+		t.phone as phone,
+		t.udid as udId
 		FROM
-		user_info_t u
+		user_info_t t
 		WHERE
-		u.phone =#{phone}
-		AND
-		u.`password` =#{password}
+		t.id=#{userID}
 	</select>
-	<select id="getUserByUId" parameterType="UserVo" resultType="UserVo">
-		select u.id,
-		u.`name` as
-		name,
-		u.`password` as password,
-		u.wx_openid as wx_openid,
-		u.qq_openid as
-		qq_openid,
-		u.phone as phone,
-		u.login_type as login_type,
-		u.account_type
-		as account_type,
-		u.headurl as headurl,
-		u.integral as integral,
-		u.nickname as nickname,
-		u.createtime as createDate,
-		u.updatetime as
-		lastuUdateDate,
-		u.remark as remark FROM user_info_t u
-		where u.id=#{id}
-	</select>
+		
 </mapper>  

@@ -1,13 +1,12 @@
 package www.tianfengSD.com.server.impl;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import www.tianfengSD.com.Vo.UserVo;
+import www.tianfengSD.com.Vo.returnVo.SendStautsVo;
 import www.tianfengSD.com.dao.IUserDao;
 import www.tianfengSD.com.server.api.IUserService;
 
@@ -20,53 +19,33 @@ import www.tianfengSD.com.server.api.IUserService;
 @Service
 @Transactional
 public class UserService implements IUserService {
-
 	@Resource
-	private IUserDao userDao;
+	private IUserDao iUserDao;
 
-	public List<UserVo> getUserList() {
-		return userDao.getUserList();
-	}
-
-	public boolean registerUser(UserVo user) {
-		Boolean isFlag = false;
-		try {
-			userDao.registerUser(user);
-			isFlag = true;
-		} catch (Exception e) {
-			System.out.println("=================================="+e);
-			isFlag = false;
+	public String userLogin(UserVo userVo) {
+		if (userVo != null) {
+			userVo.setHeadUrl(userVo.getHeadUrl() == null ? "" : userVo.getHeadUrl());
+			userVo.setHeadUrl(userVo.getNickName() == null ? "" : userVo.getNickName());
+			userVo.setHeadUrl(userVo.getPhone() == null ? "" : userVo.getPhone());
 		}
-		return isFlag;
+		return String.valueOf(iUserDao.userLogin(userVo));
 	}
 
-	@Override
-	public boolean validateUser(UserVo user) {
-		Boolean isFlag = false;
+	public UserVo getUserByUid(String userId) {
+		return iUserDao.getUserByUid(userId);
+	}
+
+	public SendStautsVo updateUserInfoById(UserVo userVo) {
+		SendStautsVo vo = new SendStautsVo();
 		try {
-			userDao.validateUser(user);
-			isFlag = true;
+			iUserDao.updateUserInfoById(userVo);
+			vo.setCode("300");
+			vo.setMsg("success ");
 		} catch (Exception e) {
-			isFlag = false;
+			vo.setCode("301");
+			vo.setMsg("error " + e);
 		}
-		return isFlag;
-	}
-
-	@Override
-	public boolean updateUserByUid(UserVo userVo) {
-		Boolean isFlag = false;
-		try {
-			userDao.updateUserByUid(userVo);
-			isFlag = true;
-		} catch (Exception e) {
-			isFlag = false;
-		}
-		return isFlag;
-	}
-
-	@Override
-	public UserVo getUserByUId(UserVo userVo) {
-		return userDao.getUserByUId(userVo);
+		return vo;
 	}
 
 }
