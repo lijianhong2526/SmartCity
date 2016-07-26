@@ -52,7 +52,7 @@ public class UserController {
 		return iUserService.updateUserInfoById(userVo);
 	}
 
-	@RequestMapping(value = "/updateUserInfoById", method = { RequestMethod.GET })
+	@RequestMapping(value = "/getUserByUid", method = { RequestMethod.GET })
 	public @ResponseBody UserVo getUserByUid(@ModelAttribute(value = "userId") String userId,
 			HttpServletRequest request, HttpServletResponse response) {
 		return iUserService.getUserByUid(userId);

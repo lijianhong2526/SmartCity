@@ -28,10 +28,10 @@ public class UserService implements IUserService {
 			userVo.setHeadUrl(userVo.getNickName() == null ? "" : userVo.getNickName());
 			userVo.setHeadUrl(userVo.getPhone() == null ? "" : userVo.getPhone());
 		}
-		return String.valueOf(iUserDao.userLogin(userVo));
+		iUserDao.userLogin(userVo);
+		return String.valueOf(iUserDao.getUid(userVo));
 	}
-
-	public UserVo getUserByUid(String userId) {
+    	public UserVo getUserByUid(String userId) {
 		return iUserDao.getUserByUid(userId);
 	}
 

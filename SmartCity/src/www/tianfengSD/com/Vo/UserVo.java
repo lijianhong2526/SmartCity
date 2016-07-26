@@ -16,15 +16,7 @@ public class UserVo extends BaseVo {
 	private String udId;
 	private String loginId;
 	private String checkKey;
-	private String userId;
-	public String getUserId() {
-		return userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
+	
 	public String getCheckKey() {
 		return checkKey;
 	}

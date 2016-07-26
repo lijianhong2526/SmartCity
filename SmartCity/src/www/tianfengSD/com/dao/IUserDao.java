@@ -15,5 +15,7 @@ public interface IUserDao {
 	public UserVo getUserByUid(String userId);
 
 	public void updateUserInfoById(UserVo userVo);
+	
+	public String getUid(UserVo userVo);
 
 }
