@@ -15,7 +15,7 @@
 	</select>
 	<update id="updateUserInfoById" parameterType="UserVo">
 		update user_info_t us
-		set 1=1
+		set id=#{userID}
 		<if test="name != null and name !=''">
 			,us.`name` = #{name}
 		</if>
@@ -31,9 +31,9 @@
 		where id=#{userID}
 	</update>
 
-	<select id="getUserByUid" parameterType="java.lang.String">
+	<select id="getUserByUid" parameterType="java.lang.String" resultType="UserVo">
 		SELECT
-		t.id as id,
+		t.id as userID,
 		t.headurl as headUrl,
 		t.login_type as loginType,
 		t.`name` as name,
@@ -45,6 +45,16 @@
 		user_info_t t
 		WHERE
 		t.id=#{userID}
+	</select>
+	<select id="getUid" parameterType="UserVo" resultType="java.lang.String">
+	    select id as usersid from user_info_t 
+	    where 1=1
+	    <if test="loginType != 0">
+	     and openid=#{loginId} and login_type=#{loginType}
+	    </if>
+	    <if test="loginType == 0">
+	     and phone=#{loginId} and login_type=#{loginType}
+	    </if>
 	</select>
 		
 </mapper>  
