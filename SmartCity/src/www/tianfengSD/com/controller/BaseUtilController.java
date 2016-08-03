@@ -44,7 +44,7 @@ public class BaseUtilController implements Serializable {
 		String status = HttpSenderShotInfoUtil.SendInfo(phone, checkey);
 		SendStautsVo vo = new SendStautsVo();
 		if ("0".equals(status)) {
-			vo.setCode("200");
+			vo.setCode("300");
 			vo.setMsg("success");
 			vo.setValue(String.valueOf(checkey));
 		} else {

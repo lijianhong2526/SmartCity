@@ -25,8 +25,8 @@ public class PropertyService implements IPropertyService {
 	private IPropertyDao iPropertyDao;
 
 	@Override
-	public List<PropertyVo> getAllProperty() {
-		return iPropertyDao.getAllProperty();
+	public List<PropertyVo> getAllProperty(String userId) {
+		return iPropertyDao.getAllProperty(userId);
 	}
 
 	@Override

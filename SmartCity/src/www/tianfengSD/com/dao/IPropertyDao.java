@@ -17,7 +17,7 @@ public interface IPropertyDao {
 	 * 获取所有物业列表
 	 * @return
 	 */
-	public List<PropertyVo> getAllProperty();
+	public List<PropertyVo> getAllProperty(String userId);
 	
 	/**
 	 * 获取缴费清单以及详情

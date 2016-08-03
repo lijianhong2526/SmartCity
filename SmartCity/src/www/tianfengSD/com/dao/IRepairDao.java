@@ -1,5 +1,7 @@
 package www.tianfengSD.com.dao;
 
+import java.util.List;
+
 import www.tianfengSD.com.Vo.RepairVo;
 
 /**
@@ -14,5 +16,8 @@ public interface IRepairDao {
 	 * @param repairVo
 	 */
 	public void AddRepair(RepairVo repairVo);
+	
+	
+	public List<RepairVo> getRepairListByUid(String uid);
 	
 }

@@ -4,12 +4,23 @@
 <!-- namespace：必须与对应的接口全类名一致 id:必须与对应接口的某个对应的方法名一致 -->
 <mapper namespace="www.tianfengSD.com.dao.IPropertyDao">
 
-	<select id="getAllProperty" resultType="PropertyVo">
-		select pt.Property_id as
-		propertyId,pt.Property_name as propertyName,
-		pt.Property_address as
-		propertyAddress
-		from property_t pt
+	<select id="getAllProperty" resultType="PropertyVo" parameterType="java.lang.String">
+		SELECT
+			pt.Property_id AS propertyId,
+			pt.Property_name AS propertyName,
+			pt.Property_address AS propertyAddress
+		FROM
+			property_t pt
+		WHERE
+			EXISTS (
+				SELECT
+				*
+				FROM
+				propertyhous_t t
+				WHERE
+				t.owner_id = #{0}
+				AND pt.Property_id = t.property_id
+			)
 	</select>
 
 	<select id="getCostbyUid" resultType="CostApiVO" parameterType="java.lang.String">

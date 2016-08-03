@@ -22,8 +22,8 @@ public class PropertyController {
 	private IPropertyService iPropertyService;
 
 	@RequestMapping(value = "/getAllProperty", method = { RequestMethod.GET })
-	public @ResponseBody List<PropertyVo> getAllProperty() {
-		List<PropertyVo> list = iPropertyService.getAllProperty();
+	public @ResponseBody List<PropertyVo> getAllProperty(@ModelAttribute(value = "uid") String uid) {
+		List<PropertyVo> list = iPropertyService.getAllProperty(uid);
 		return list;
 	}
 

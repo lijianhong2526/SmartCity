@@ -11,7 +11,7 @@
 		#{udId,jdbcType=VARCHAR,mode=IN},
 		#{nickName,jdbcType=VARCHAR,mode=IN},
 		#{headUrl,jdbcType=VARCHAR,mode=IN},
-		#{userId,jdbcType=VARCHAR,mode=OUT})}]]>
+		#{userID,jdbcType=VARCHAR,mode=OUT})}]]>
 	</select>
 	<update id="updateUserInfoById" parameterType="UserVo">
 		update user_info_t us

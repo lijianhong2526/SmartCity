@@ -23,18 +23,20 @@
           <dt id="column2" onclick=""><a href="#">业主管理</a></dt>
           <dt id="column3" onclick="setTab('column',3)"><a href="#">物业费用维护</a></dt>
           <dt id="column4" onclick="setTab('column',4)"><a href="#">电子钥匙管理</a></dt>
-          <dt id="column4" onclick="setTab('column',4)"><a href="#">电子钥匙审批</a></dt>
+          <dt id="column4" onclick="setTab('column',5)"><a href="#">电子钥匙审批</a></dt>
         </div>
       </dl>
     </div>
     <div class="service" onclick="menuDisplyController(2)">
-      <h5>车辆管理</h5>
+      <h5>车闸管理</h5>
     </div>
      <div class="tab2" id="tab2" style="display: none;">
       <dl class="call">
         <div class="medo" >
-           <dt id="column1" onclick=" " ><a href="#">新增车辆</a></dt>
-          <dt id="column2" onclick=""><a href="#">车辆列表</a></dt>
+          <dt id="column1" onclick="loadHtml('view/parkingLogManager.html')" ><a href="#">停车场管理</a></dt>
+          <dt id="column2" onclick=""><a href="#">月卡车辆查询</a></dt>
+          <dt id="column2" onclick=""><a href="#">车辆出入记录管理</a></dt>
+          <dt id="column2" onclick=""><a href="#">停车场设备监控</a></dt>
         </div>
       </dl>
     </div>
@@ -109,10 +111,10 @@
   </div>
 
 <!--右边主要内容  -->
-		<div class="meduo">
+	<div class="meduo" style="width: 500px;height: 700px;">
 			<div class="right-content" id="con_column_1">
 			</div>
-		</div>
+	</div>
 	</div>
 </body>
 </html>

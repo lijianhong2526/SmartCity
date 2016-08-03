@@ -42,6 +42,7 @@ public class UserController {
 		} catch (Exception e) {
 			vo.setCode("301");
 			vo.setMsg("error " + e);
+			System.out.println(e);
 		}
 		return vo;
 	}

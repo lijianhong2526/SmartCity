@@ -19,7 +19,7 @@ public interface IPropertyService {
 	 * 
 	 * @return
 	 */
-	public List<PropertyVo> getAllProperty();
+	public List<PropertyVo> getAllProperty(String userId);
 
 	/**
 	 * 获取缴费清单以及详情
